@@ -1,5 +1,5 @@
 # A simple makefile for creating the MEA steady state model distribution tarball
-VERSION    := 2015.10.00
+VERSION    := `git describe --tags`
 PRODUCT    := MEA Steady State Model
 PROD_SNAME := MEA_ssm
 LICENSE    := CCSI_TE_LICENSE_$(PROD_SNAME).txt
