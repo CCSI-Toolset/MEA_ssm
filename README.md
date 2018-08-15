@@ -1,5 +1,5 @@
 # MEA_ssm
-MEA Steady State Model
+MEA Steady State Model   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1345754.svg)](https://doi.org/10.5281/zenodo.1345754)
 
 Note: This product is also part of the [Process Models Bundle](../../../ProcessModels_bundle)
 
