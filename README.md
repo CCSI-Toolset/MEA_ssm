@@ -7,9 +7,9 @@ Note: This product is also part of the [Process Models Bundle](../../../ProcessM
 See installation and user guide documents in the [documentation](./docs) subdirectory.
 
 ## Authors
-* Josh Morgan
-* Ben Omell
-* Debangsu Bhattacharyya
+* [Josh Morgan](https://github.com/jmorgan29)
+* [Ben Omell](https://github.com/omellben)
+* [Debangsu Bhattacharyya](https://www.statler.wvu.edu/faculty-staff/faculty/debangsu-bhattacharyya)
 
 See also the list of [contributors](../../contributors) who participated in this project.
 
