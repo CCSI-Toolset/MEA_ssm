@@ -1,5 +1,5 @@
 # MEA_ssm
-The MEA Steady State Model is a model of an aqueous monoethanolamine solvent-based CO2 capture system. The process flowsheet includes both absorption and stripping columns, with equipment specifications based on the pilot system at the National Carbon Capture Center. The process model has been updated in version 3.2.0 to support both Aspen V10 and V11 by providing separate dynamic-link library (dll) files, which contained compiled Fortran user subroutines in 32-bit and 64-bit code, respectively. 
+The MEA Steady State Model is a model of an aqueous monoethanolamine solvent-based CO2 capture system. The process flowsheet includes both absorption and stripping columns, with equipment specifications based on the pilot system at the National Carbon Capture Center. The process model has been updated in version 3.2.0 to support both Aspen V10 and V11 by providing separate dynamic-link library (dll) files, which contained compiled Fortran user subroutines in 32-bit and 64-bit code, respectively. The dll developed for Aspen V11 is expected to work with later versions, and it was been confirmed to be compatible with V12. 
 
 Note: This product is also part of the [Process Models Bundle](../../../ProcessModels_bundle)
 
