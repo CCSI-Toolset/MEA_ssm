@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorials &mdash; MEA Steady-State Model 3.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Usage Information" href="usage_information.html" />
+    <link rel="prev" title="Development of FORTRAN Subroutines" href="fortran_subroutines.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> MEA Steady-State Model
+            <img src="_static/ccsi2_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="model_development.html">Model Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortran_subroutines.html">Development of FORTRAN Subroutines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#predicting-system-vle">Predicting System VLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#co2-capture-process-simulation">CO<sub>2</sub> Capture Process Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage_information.html">Usage Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright Notice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license_agreement.html">License Agreement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MEA Steady-State Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Tutorials</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorials.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorials">
+<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h1>
+<p>Two tutorials are provide here to acquaint the user with the MEA process model. The first is focused on property calculations, in terms of
+estimating the equilibrium partial pressure of CO<sub>2</sub> as a function of temperature and CO<sub>2</sub> loading. The second tutorial is focused
+on flowsheet simulation of the CO<sub>2</sub> absorption and solvent regeneration processes.</p>
+<section id="predicting-system-vle">
+<h2>Predicting System VLE<a class="headerlink" href="#predicting-system-vle" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Place the “CCSI_MEAModel.bkp” file and the supporting files
+“ccsi.opt” and “ccsi10.dll” in the same directory. Open the
+“CCSI_MEAModel.bkp” file. When prompted with the “Column
+Sizing/Rating Detected” box, select the “Use Legacy Hydraulics”
+option. If the Model Palette is not visible, it may be selected from
+the “View” tab at the top of the window. In the Model Palette,
+navigate to the “Manipulators” tab and then select “Mult” to create a
+multiplier block, which will be referred to by its default name “B1.”
+Double-click “B1” and then set the multiplication factor to “1.” Add
+an inlet stream to the block by clicking “Material” in the Model
+Palette, the red arrow on the inlet of B1, and then elsewhere in the
+flowsheet. Repeat the procedure for the outlet stream of B1. Name the
+inlet and outlet streams as “IN” and “OUT,” respectively. <strong>Note:</strong>
+The streams may be renamed by double clicking the default name and
+typing the new name.</p></li>
+</ol>
+<ol class="arabic simple">
+<li><p>Double-click “IN” and configure it as follows:</p>
+<ol class="loweralpha simple">
+<li><p>Select “Temperature” and “Vapor Fraction” as the “Flash Type”
+specifications.</p></li>
+<li><p>Temperature: 40°C.</p></li>
+<li><p>Vapor Fraction: 0.0001.</p></li>
+<li><p>Select “Mass-flow” in “gm/hr” as the composition basis. Set the
+values for “H<sub>2</sub>O” and “MEA” as “7” and “3,”
+respectively.</p></li>
+</ol>
+</li>
+<li><p>In the left navigation pane, navigate to “Model Analysis Tools” →
+“Sensitivity,” and then click “New.” The new sensitivity block may be
+named “PCO2.” Under “Manipulated variable” in the “Vary” tab, select
+“New,” select “Mole Flow” as “type,” “IN” as “stream,” “CO2” as
+“component,” and “mol/hr” as the “units.” Under “Manipulated variable
+limits,” specify “0.0005” and “0.03” as the “lower” and “upper
+limits,” respectively, and “10” as the “number of points.” Navigate
+to the “Define” tab and then create a new measured variable named
+“PCO2.” Under “Edit selected variable,” select “Streams” as the
+“category,” “Stream-Prop” as the “type,” “IN” as the “stream,” and
+“PPCO2” as the “prop set”. Change the units to “kPa”. Navigate to the
+“Tabulate” tab and then click “Fill Variables.” Navigate to the
+“Options” tab and select the “Do not execute base case,” option under
+“Execution options.”</p></li>
+<li><p>Run the simulation by clicking the “Run” arrow or pressing “F5.” The
+results of the “PCO2” sensitivity block should be consistent with
+what is shown in Table 1. <strong>Note:</strong> All of the warnings that appear
+in the “Control Panel” while running the simulation may be ignored.</p></li>
+</ol>
+<p><strong>Table 1: Results of VLE Sensitivity Block</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 38%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row/
+Case</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><dl class="simple">
+<dt>CO2 MOLEFLOW</dt><dd><p>(MOL/HR)</p>
+</dd>
+</dl>
+</th>
+<th class="head"><p>PCO2
+(KPA)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>OK</p></td>
+<td><p>0.0005</p></td>
+<td><p>2.24E-5</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>OK</p></td>
+<td><p>0.003778</p></td>
+<td><p>0.00097</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>OK</p></td>
+<td><p>0.007056</p></td>
+<td><p>0.00363</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>OK</p></td>
+<td><p>0.010333</p></td>
+<td><p>0.00955</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>OK</p></td>
+<td><p>0.013611</p></td>
+<td><p>0.02339</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>OK</p></td>
+<td><p>0.016889</p></td>
+<td><p>0.06171</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>OK</p></td>
+<td><p>0.020167</p></td>
+<td><p>0.21295</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>OK</p></td>
+<td><p>0.023444</p></td>
+<td><p>1.47244</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>OK</p></td>
+<td><p>0.026722</p></td>
+<td><p>18.5729</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>OK</p></td>
+<td><p>0.03</p></td>
+<td><p>103.162</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>From this example, the vapor-liquid equilibrium (VLE) of the ternary
+MEA-H<sub>2</sub>O-CO<sub>2</sub> system as a function of temperature
+and CO<sub>2</sub> loading may be determined for 30 wt% MEA. The
+CO<sub>2</sub> loading (mol CO<sub>2</sub>/mol MEA) may be calculated by
+multiplying the CO<sub>2</sub> molar flow by the molecular weight of
+MEA and dividing by the mass flow of MEA. For example:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\frac{\mathbf{0.0005\ mol\ }\mathbf{\text{CO}}_{\mathbf{2}}}{\mathbf{\text{hr}}}\mathbf{\times}\frac{\mathbf{61.08308\ g\ MEA}}{\mathbf{\text{mol MEA}}}\mathbf{\times}\frac{\mathbf{\text{hr}}}{\mathbf{3\ g\ MEA}}\mathbf{\approx 0.0102\ mol\ }\mathbf{\text{CO}}_{\mathbf{2}}\mathbf{/mol\ MEA}\]</div>
+<p>Following this procedure and evaluating the sensitivity block for temperatures of 80 and 120°C, by changing the temperature of the stream “IN” and re-running the simulation, a plot similar to Figure 2 may be generated.</p>
+<img alt="_images/CO2_partial_pressure.png" src="_images/CO2_partial_pressure.png" />
+<p><strong>Figure 1: CO2 partial pressure as a function of loading and temperature (30 wt% MEA)</strong></p>
+</section>
+<section id="co2-capture-process-simulation">
+<h2>CO<sub>2</sub> Capture Process Simulation<a class="headerlink" href="#co2-capture-process-simulation" title="Permalink to this headline"></a></h2>
+<p>The base case model that is set up in the file “CCSI_MEAModel.bkp” has
+operating variables and equipment configurations as specified in Table
+2.</p>
+<p><strong>Table 2: Variables for Base Case Simulation</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 86%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ABSLEAN Stream (Absorber Solvent Inlet)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Temperature (°C)</p></td>
+<td><p>40.97</p></td>
+</tr>
+<tr class="row-even"><td><p>Pressure (kPa)</p></td>
+<td><p>245.94</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass Flow (kg/hr)</p></td>
+<td><p>6803.7</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Component Mole Fractions</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>H<sub>2</sub>O</p></td>
+<td><p>0.87457</p></td>
+</tr>
+<tr class="row-even"><td><p>CO<sub>2</sub></p></td>
+<td><p>0.01585</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEA</p></td>
+<td><p>0.10958</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GASIN Stream (Absorber Gas Inlet)</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Temperature (°C)</p></td>
+<td><p>42.48</p></td>
+</tr>
+<tr class="row-even"><td><p>Pressure (kPa)</p></td>
+<td><p>108.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass Flow (kg/hr)</p></td>
+<td><p>2266.1</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Component Mass Fractions</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>H<sub>2</sub>O</p></td>
+<td><p>0.04623</p></td>
+</tr>
+<tr class="row-even"><td><p>CO<sub>2</sub></p></td>
+<td><p>0.17314</p></td>
+</tr>
+<tr class="row-odd"><td><p>N<sub>2</sub></p></td>
+<td><p>0.71165</p></td>
+</tr>
+<tr class="row-even"><td><p>O<sub>2</sub></p></td>
+<td><p>0.06898</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Absorber</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Intercooler #1 Flowrate (kg/hr)</p></td>
+<td><p>7364.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>Intercooler #1 Return Temperature (°C)</p></td>
+<td><p>40.13</p></td>
+</tr>
+<tr class="row-even"><td><p>Intercooler #2 Flowrate (kg/hr)</p></td>
+<td><p>7421.57</p></td>
+</tr>
+<tr class="row-odd"><td><p>Intercooler #2 Flowrate (°C)</p></td>
+<td><p>43.32</p></td>
+</tr>
+<tr class="row-even"><td><p>Absorber Top Pressure (kPa)</p></td>
+<td><p>108.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>Absorber Packing Diameter (m)</p></td>
+<td><p>0.64135</p></td>
+</tr>
+<tr class="row-even"><td><p>Absorber Packing Height (ft)</p></td>
+<td><p>60.7184</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Regenerator</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Inlet Temperature (°C)</p></td>
+<td><p>104.81</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inlet Pressure (kPa)</p></td>
+<td><p>183.87</p></td>
+</tr>
+<tr class="row-even"><td><p>Top Pressure (kPa)</p></td>
+<td><p>183.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reboiler Duty (kW)</p></td>
+<td><p>430.61</p></td>
+</tr>
+<tr class="row-even"><td><p>Packing Diameter (in)</p></td>
+<td><p>23.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>Packing Height (ft)</p></td>
+<td><p>39.6837</p></td>
+</tr>
+</tbody>
+</table>
+<p>The variables described in Table 3 may be varied within reason, although
+abrupt changes in certain variables may results in failure of the
+simulation to converge. In the simulation provided in the example file,
+the variables for the “ABSLEAN” and “GASIN” streams can be located by
+double-clicking the respective streams. The variables for the absorber
+intercoolers can be located from the navigation pane by selecting
+“Blocks” → “ABSORBER” → “Configuration” → “Pumparounds,” and the first
+and second intercoolers are referred to as “P-1” and “P-2,”
+respectively. The top pressure of the absorber and regenerator can be
+located by double-clicking the “ABSORBER” and “REGEN” blocks and
+selecting the “Pressure” tab. Moreover, the reboiler duty for “REGEN” is
+located under the “Configuration” tab. The column packing diameters and
+height can be located by selecting “Blocks” → “ABOSRBER” or “REGEN” →
+“Sizing and Rating” → “Packing Rating” → “1” → “Setup.” The values of
+the regenerator inlet pressure and temperature are specified in the
+“PUMP” and “EXCHANGE” blocks, respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A sensitivity block, referred to as “FLOW” in the simulation, is used to set the
+flowrate of the inlet solvent stream, as the simulation will not
+automatically converge for such a low flow rate.</p>
+</div>
+<p>Next, the CO<sub>2</sub> capture process, which includes the
+absorber and regenerator columns, is evaluated for two sets of operating
+conditions.</p>
+<ol class="arabic simple">
+<li><p>Open the “CCSI_MEAModel.bkp” file. In the navigation pane,
+right-click “Blocks,” select “Activate,” right-click “Streams,” and
+then select “Activate.” Run the simulation. <strong>Note:</strong> All streams and
+blocks have been deactivated to reduce the time required to obtain
+the results for the test in Section 2.2 Predicting System VLE. If
+block “B1” and streams “IN” and “OUT” have already been created in
+the same file, they need to be deactivated by right-clicking them and
+selecting “Deactivate” before activating all streams with the
+aforementioned procedure.</p></li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>In the flowsheet, right-click stream “ABSRICH,” select “Results,” and
+then select “STRIPOUT” from the drop-down arrow at the top of the
+right column. Ensure that the results obtained match those given in
+Table 3, noting that only selected rows are included in the table.
+The results shown in Table 3 were obtained from Aspen V10, and may
+vary slightly when using Aspen V11.</p></li>
+</ol>
+<p><strong>Table 3: Selected Stream Table Results</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mole Flow mol/hr</p></th>
+<th class="head"><p>ABSRICH</p></th>
+<th class="head"><p>STRIPOUT</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>H2O</p></td>
+<td><p>260007</p></td>
+<td><p>256376</p></td>
+</tr>
+<tr class="row-odd"><td><p>CO2</p></td>
+<td><p>0.344276</p></td>
+<td><p>0.976410</p></td>
+</tr>
+<tr class="row-even"><td><p>MEA</p></td>
+<td><p>8684.95</p></td>
+<td><p>26272.89</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEA+</p></td>
+<td><p>12184.17</p></td>
+<td><p>3270.263</p></td>
+</tr>
+<tr class="row-even"><td><p>MEACOO-</p></td>
+<td><p>11833.81</p></td>
+<td><p>3152.68</p></td>
+</tr>
+<tr class="row-odd"><td><p>HCO3-</p></td>
+<td><p>350.36</p></td>
+<td><p>117.58</p></td>
+</tr>
+<tr class="row-even"><td><p>N2</p></td>
+<td><p>33.17</p></td>
+<td><p>2.14E-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>O2</p></td>
+<td><p>5.55</p></td>
+<td><p>5.47E-18</p></td>
+</tr>
+<tr class="row-even"><td><p>Temperature C</p></td>
+<td><p>52.01</p></td>
+<td><p>120.94</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pressure kPa</p></td>
+<td><p>108.82</p></td>
+<td><p>183.7</p></td>
+</tr>
+<tr class="row-even"><td><p>Enthalpy J/kmol</p></td>
+<td><p>-301829043</p></td>
+<td><p>-281379385</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="6">
+<li><p>Reinitialize the simulation by clicking “Reset” or pressing
+“Shift+F5,” and then selecting “OK.” In the navigation pane, navigate
+to “Blocks” → “Absorber” → “Configuration” → “Pumparounds” → “P-1,”
+and then change the “flow rate” to “3000 kg/hr.” Navigate to “P-2”
+and then change the “flow rate” to the same value.</p></li>
+<li><p>Navigate to “Model Analysis Tools” and activate the “FLOW”
+sensitivity block, which is used to determine the CO<sub>2</sub>
+capture percentage in the absorber and the required reboiler duty for
+the stripper as a function of the lean solvent flowrate. Execute the
+model, navigate to the results of the sensitivity block, and verify
+that the results are similar to those shown in Figure 3; note that
+these results were generated using Aspen V10 and may be slightly
+different when running the model with Aspen V11.</p></li>
+</ol>
+<img alt="_images/flow_results.png" src="_images/flow_results.png" />
+<p><strong>Figure 2: Results of the “FLOW” sensitivity block for the case study.</strong></p>
+<ol class="arabic simple" start="8">
+<li><p>Navigate to “Blocks” → “Absorber” → “Profiles” and then highlight the
+columns labeled “Vapor Temperature” and “Liquid Temperature.” Under
+“Plot” on the “Home” tab, select “Custom,” and then verify that the
+resulting plot resembles Figure 4. <strong>Note:</strong> These temperature
+profiles correspond to the last simulation executed (Case 8).</p></li>
+</ol>
+<img alt="_images/absorber_temp.png" src="_images/absorber_temp.png" />
+<p><strong>Figure 3: Absorber temperature profile for the case study.</strong></p>
+<ol class="arabic simple" start="9">
+<li><p>Navigate to “Blocks” → “Regen” → “Profiles” and then repeat the
+procedure described in Step 5. Verify that the temperature profile
+resembles what is shown in Figure 4.</p></li>
+</ol>
+<img alt="_images/regen_temp.png" src="_images/regen_temp.png" />
+<p><strong>Figure 4: Regenerator temperature profile for the case study.</strong></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fortran_subroutines.html" class="btn btn-neutral float-left" title="Development of FORTRAN Subroutines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage_information.html" class="btn btn-neutral float-right" title="Usage Information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="copyright.html">Copyright</a> 2022, Josh Morgan, Anderson Soares Chinen, Ben Omell, Debangsu Bhattacharyya, Anuja Deshpande.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
