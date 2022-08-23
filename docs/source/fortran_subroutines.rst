@@ -6,8 +6,6 @@ the user may used the provided :file:`ccsi.opt` and either the :file:`ccsi10.dll
 and Microsoft Visual Studio are installed in the machine. Open the Aspen application "Set Compiler for V10" (or the application corresponding to the version of 
 Aspen Plus in use) to see the list of combinations compatible with V10 and V11, respectively; this is shown for both versions in Figure 1.
 
-.. image:: media/set_compiler.png
-
 **Figure 1. 'Set Compiler' applications for (A) Aspen Plus V10 and (B) Aspen Plus V11**
 
 As directed in the set compiler application, select an option for which the 'State' is 'OK'. the provided dll files :file:`ccsi10.dll` and :file:`ccsi11.dll` were compiled with the respective 
@@ -15,8 +13,6 @@ FORTRAN compilers shown with the 'OK' status in Figure 1. If all options are sho
 is installed.
 
 To obtain the FORTRAN template ``.f`` files distributed with Aspen Tech software, navigate to one of the following folders depending on the Aspen verson of interest:
-
-.. image:: media/FortranCode/Template_Directories.png
 
 .. code::
 
@@ -35,16 +31,12 @@ Viscosity Model
 For the liquid viscosity model, open the file :file:`mul2u2.f`. In the section of the code titled :code-section:`DECLARE ARGUMENTS`, add the following code for declaring additional variables. The existing code in 
 this section of the template should not be deleted, as it is needed to declare the major input and output variables of the subroutine.
 
-.. image:: media/FortranCode/viscosity/Viscosity_1.png
-
 .. literalinclude:: /code/mul2u2.f
    :language: fortran
    :lines: 2-6
 
 In the :code-section:`BEGIN EXECUTABLE CODE` section, remove the template code that has been provided. Note that the final section of the template, which includes the definitions of the liquid viscosity (:code:`MUMX`),
 its temperature derivative (:code:`DMUMX`), and its pressure derivative (:code:`DPMUMX`), should not be deleted. Insert the following code under :code-section:`BEGIN EXECUTABLE CODE`:
-
-.. image:: media/FortranCode/viscosity/Viscosity_2.png
 
 .. literalinclude:: /code/mul2u2.f
    :language: fortran
@@ -59,16 +51,12 @@ Molar Volume Model
 For the liquid molar volume model, the process is analogous to that used for the viscosity model. In the folder that contains the Fortran templates, select :file:`vl2u2.f`. The following code should be added to the
 :code-section:`DECLARE ARGUMENTS` section without deleting the existing code:
 
-.. image:: media/FortranCode/molar_volume/Molar_Volume_1.png
-
 .. literalinclude:: /code/vl2u2.f
    :language: fortran
    :lines: 2-8
 
 In the section marked :code-section:`BEGIN EXECUTABLE CODE`, remove the template code and replace with the code given below. As with the viscosity model, avoid deleting the definitions of liquid molar volume (:code:`VMX`),
 its temperature derivative (:code:`DVMX`), and its pressure derivative (:code:`DPVMX`).
-
-.. image:: media/FortranCode/molar_volume/Molar_Volume_2.png
 
 .. literalinclude:: /code/vl2u2.f
    :language: fortran
@@ -83,16 +71,12 @@ Surface Tension Model
 The process for creating the surface tension model is very similar to that used for the viscosity and molar volume models. In the folder containing the Fortran templates, select :file:`sig2u2.f`. The following
 code should be added to the :code-section:`DECLARE ARGUMENTS` section without deleting the existing code:
 
-.. image:: media/FortranCode/surface_tension/Surface_Tension_1.png
-
 .. literalinclude:: /code/sig2u2.f
    :language: fortran
    :lines: 2-10
 
 In the :code-section:`BEGIN EXECUTABLE CODE` section, remove the template code and replace with the code given below. The definitions of the liquid surface tension (:code:`STMX`) and its temperature and pressure 
 derivatives (:code:`DSTMX` and :code:`DPSTMX`) should be retained.
-
-.. image:: media/FortranCode/surface_tension/Surface_Tension_2.png
 
 .. literalinclude:: /code/sig2u2.f
    :language: fortran
@@ -110,21 +94,15 @@ Select the template :file:`dl0u.f` and add the following statement required for 
 
    #include "dms_plex.cmn"
 
-.. image:: media/FortranCode/diffusivity/Diffusivity_1.png
-
 Ensure that the other :code:`#include` statements are retained.
 
 The following code should be added to the :code-section:`DECLARE ARGUMENTS` section of the subroutine without deleting the existing code:
-
-.. image:: media/FortranCode/diffusivity/Diffusivity_2.png
 
 .. literalinclude:: /code/dl0u.f
    :language: fortran
    :lines: 3-11
 
 Remove all code given in the :code-section:`BEGIN EXECUTABLE CODE` section, leaving only the final :code:`END` statement. Replace this code with the following:
-
-.. image:: media/FortranCode/diffusivity/Diffusivity_3.png
 
 .. literalinclude:: /code/dl0u.f
    :language: fortran
