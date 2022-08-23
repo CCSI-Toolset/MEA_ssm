@@ -6,7 +6,7 @@
 MEA Steady-State Model
 ==================================================
 
-The MEA Steady State Model is a model of an aqueous monoethanolamine solvent-based CO\ :sub:`2` \ capture system. The process flowsheet includes
+The MEA Steady State Model is a model of an aqueous monoethanolamine solvent-based |co2| capture system. The process flowsheet includes
 both absorption and stripping columns, with equipment specifications based on the pilot system (0.5 MWe scale) at the National Carbon Capture Center.
 The process model is implemented in Aspen Plus\ :sup:`®` \ and currently supports V10 and later. 
 

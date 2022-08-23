@@ -2,30 +2,30 @@
 ==========
 
 Two tutorials are provide here to acquaint the user with the MEA process model. The first is focused on property calculations, in terms of
-estimating the equilibrium partial pressure of CO\ :sub:`2` \ as a function of temperature and CO\ :sub:`2` \ loading. The second tutorial is focused 
-on flowsheet simulation of the CO\ :sub:`2` \ absorption and solvent regeneration processes.
+estimating the equilibrium partial pressure of |co2| as a function of temperature and |co2| loading. The second tutorial is focused 
+on flowsheet simulation of the |co2| absorption and solvent regeneration processes.
 
 Predicting System VLE
 ---------------------
 
 
-1. Place the “CCSI_MEAModel.bkp” file and the supporting files
-   “ccsi.opt” and “ccsi10.dll” in the same directory. Open the
-   “CCSI_MEAModel.bkp” file. When prompted with the “Column
-   Sizing/Rating Detected” box, select the “Use Legacy Hydraulics”
+#. Place the :file:`CCSI_MEAModel.bkp` file and the supporting files
+   :file:`ccsi.opt` and :file:`ccsi10.dll` in the same directory. Open the
+   :file:`CCSI_MEAModel.bkp` file.
+   When prompted with the :guilabel:`Column Sizing/Rating Detected` box, select the :guilabel:`Use Legacy Hydraulics`
    option. If the Model Palette is not visible, it may be selected from
-   the “View” tab at the top of the window. In the Model Palette,
-   navigate to the “Manipulators” tab and then select “Mult” to create a
-   multiplier block, which will be referred to by its default name “B1.”
-   Double-click “B1” and then set the multiplication factor to “1.” Add
-   an inlet stream to the block by clicking “Material” in the Model
+   the :guilabel:`View` tab at the top of the window. In the Model Palette,
+   navigate to the :guilabel:`Manipulators` tab and then select :guilabel:`Mult` to create a
+   multiplier block, which will be referred to by its default name :guilabel:`B1`.
+   Double-click :guilabel:`B1` and then set the multiplication factor to :guilabel:`1`. Add
+   an inlet stream to the block by clicking :guilabel:`Material` in the Model
    Palette, the red arrow on the inlet of B1, and then elsewhere in the
    flowsheet. Repeat the procedure for the outlet stream of B1. Name the
-   inlet and outlet streams as “IN” and “OUT,” respectively. **Note:**
+   inlet and outlet streams as :guilabel:`IN` and :guilabel:`OUT`, respectively. **Note:**
    The streams may be renamed by double clicking the default name and
    typing the new name.
 
-1. Double-click “IN” and configure it as follows:
+#. Double-click :guilabel:`IN` and configure it as follows:
 
    a. Select “Temperature” and “Vapor Fraction” as the “Flash Type”
       specifications.
@@ -38,10 +38,10 @@ Predicting System VLE
       values for “H\ :sub:`2`\ O” and “MEA” as “7” and “3,”
       respectively.
 
-2. In the left navigation pane, navigate to “Model Analysis Tools” →
-   “Sensitivity,” and then click “New.” The new sensitivity block may be
-   named “PCO2.” Under “Manipulated variable” in the “Vary” tab, select
-   “New,” select “Mole Flow” as “type,” “IN” as “stream,” “CO2” as
+1. In the left navigation pane, navigate to :menuselection:`Model Analysis Tools --> Sensitivity`
+   and then click :guilabel:`New`. The new sensitivity block may be
+   named “PCO2.” Under :guilabel:`Manipulated variable` in the :guilabel:`Vary` tab, select
+   :guilabel:`New`, select :guilabel:`Mole Flow` as “type,” “IN” as “stream,” “CO2” as
    “component,” and “mol/hr” as the “units.” Under “Manipulated variable
    limits,” specify “0.0005” and “0.03” as the “lower” and “upper
    limits,” respectively, and “10” as the “number of points.” Navigate
@@ -53,7 +53,7 @@ Predicting System VLE
    “Options” tab and select the “Do not execute base case,” option under
    “Execution options.”
 
-3. Run the simulation by clicking the “Run” arrow or pressing “F5.” The
+3. Run the simulation by clicking the “Run” arrow or pressing :kbd:`F5`. The
    results of the “PCO2” sensitivity block should be consistent with
    what is shown in Table 1. **Note:** All of the warnings that appear
    in the “Control Panel” while running the simulation may be ignored.
@@ -102,7 +102,7 @@ Following this procedure and evaluating the sensitivity block for temperatures o
 **Figure 1: CO2 partial pressure as a function of loading and temperature (30 wt% MEA)**
 
 
-CO\ :sub:`2` \ Capture Process Simulation
+|co2| Capture Process Simulation
 -------------------------------------------
 
 The base case model that is set up in the file “CCSI_MEAModel.bkp” has

@@ -39,6 +39,11 @@ extensions = []
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
+html_static_path = ["_static"]
+html_css_files = [
+    "css/custom.css",
+]
+
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -59,6 +64,13 @@ html_logo = "media/ccsi2_logo.png"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+rst_epilog = r"""
+.. |co2| replace:: CO\ :sub:`2` \
+.. |h2o| replace:: H\ :sub:`2`\ O
+.. |mea| replace:: :abbr:`MEA (monoethanolamine)`\
+"""
+
 
 def setup(app):
     app.add_role("code-section", roles.code_role)
