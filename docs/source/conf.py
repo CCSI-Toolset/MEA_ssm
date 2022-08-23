@@ -14,6 +14,8 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+from docutils.parsers.rst import roles
+
 
 # -- Project information -----------------------------------------------------
 
@@ -57,3 +59,6 @@ html_logo = "media/ccsi2_logo.png"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+def setup(app):
+    app.add_role("code-section", roles.code_role)
