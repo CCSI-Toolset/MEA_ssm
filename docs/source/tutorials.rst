@@ -19,44 +19,50 @@ Predicting System VLE
    multiplier block, which will be referred to by its default name :guilabel:`B1`.
    Double-click :guilabel:`B1` and then set the multiplication factor to :guilabel:`1`. Add
    an inlet stream to the block by clicking :guilabel:`Material` in the Model
-   Palette, the red arrow on the inlet of B1, and then elsewhere in the
-   flowsheet. Repeat the procedure for the outlet stream of B1. Name the
-   inlet and outlet streams as :guilabel:`IN` and :guilabel:`OUT`, respectively. **Note:**
-   The streams may be renamed by double clicking the default name and
-   typing the new name.
+   Palette, the red arrow on the inlet of :guilabel:`B1`, and then elsewhere in the
+   flowsheet. Repeat the procedure for the outlet stream of :guilabel:`B1`. Name the
+   inlet and outlet streams as :guilabel:`IN` and :guilabel:`OUT`, respectively.
+   
+   .. note::
+
+    The streams may be renamed by double clicking the default name and
+    typing the new name.
 
 #. Double-click :guilabel:`IN` and configure it as follows:
 
-   a. Select “Temperature” and “Vapor Fraction” as the “Flash Type”
+   a. Select :guilabel:`Temperature` and :guilabel:`Vapor Fraction` as the :guilabel:`Flash Type`
       specifications.
 
    b. Temperature: 40°C.
 
    c. Vapor Fraction: 0.0001.
 
-   d. Select “Mass-flow” in “gm/hr” as the composition basis. Set the
-      values for “H\ :sub:`2`\ O” and “MEA” as “7” and “3,”
+   d. Select :guilabel:`Mass-flow` in :guilabel:`gm/hr` as the composition basis. Set the
+      values for :guilabel:`H2O` and :guilabel:`MEA` as :guilabel:`7` and :guilabel:`3`
       respectively.
 
 1. In the left navigation pane, navigate to :menuselection:`Model Analysis Tools --> Sensitivity`
    and then click :guilabel:`New`. The new sensitivity block may be
-   named “PCO2.” Under :guilabel:`Manipulated variable` in the :guilabel:`Vary` tab, select
-   :guilabel:`New`, select :guilabel:`Mole Flow` as “type,” “IN” as “stream,” “CO2” as
-   “component,” and “mol/hr” as the “units.” Under “Manipulated variable
-   limits,” specify “0.0005” and “0.03” as the “lower” and “upper
-   limits,” respectively, and “10” as the “number of points.” Navigate
-   to the “Define” tab and then create a new measured variable named
-   “PCO2.” Under “Edit selected variable,” select “Streams” as the
-   “category,” “Stream-Prop” as the “type,” “IN” as the “stream,” and
-   “PPCO2” as the “prop set”. Change the units to “kPa”. Navigate to the
-   “Tabulate” tab and then click “Fill Variables.” Navigate to the
-   “Options” tab and select the “Do not execute base case,” option under
-   “Execution options.”
+   named “PCO2”. Under :guilabel:`Manipulated variable` in the :guilabel:`Vary` tab, select
+   :guilabel:`New`, select :guilabel:`Mole Flow` as :guilabel:`type`, :guilabel:`IN` as :guilabel:`stream`, :guilabel:`CO2` as
+   :guilabel:`component`, and :guilabel:`mol/hr` as the :guilabel:`units`. Under :guilabel:`Manipulated variable limits`,
+   specify :guilabel:`0.0005` and :guilabel:`0.03` as the :guilabel:`lower` and :guilabel:`upper limits`, respectively, and :guilabel:`10` as the :guilabel:`number of points`.
+   Navigate to the :guilabel:`Define` tab and then create a new measured variable named :guilabel:`PCO2`.
+   Under :guilabel:`Edit selected variable`, select :guilabel:`Streams` as the
+   :guilabel:`category`, :guilabel:`Stream-Prop` as the :guilabel:`type`, :guilabel:`IN` as the :guilabel:`stream`, and
+   :guilabel:`PPCO2` as the :guilabel:`prop set`.
+   Change the units to :guilabel:`kPa`.
+   Navigate to the :guilabel:`Tabulate` tab and then click :guilabel:`Fill Variables`.
+   Navigate to the :guilabel:`Options` tab and select the :guilabel:`Do not execute base case` option under
+   :guilabel:`Execution options`.
 
-3. Run the simulation by clicking the “Run” arrow or pressing :kbd:`F5`. The
-   results of the “PCO2” sensitivity block should be consistent with
-   what is shown in Table 1. **Note:** All of the warnings that appear
-   in the “Control Panel” while running the simulation may be ignored.
+3. Run the simulation by clicking the :guilabel:`Run` arrow or pressing :kbd:`F5`. The
+   results of the :guilabel:`PCO2` sensitivity block should be consistent with
+   what is shown in Table 1.
+
+   .. note::
+
+      All of the warnings that appear in the :guilabel:`Control Panel` while running the simulation may be ignored.
 
 
 **Table 1: Results of VLE Sensitivity Block**
@@ -96,7 +102,7 @@ Predicting System VLE
 .. math::
    \frac{\mathbf{0.0005\ mol\ }\mathbf{\text{CO}}_{\mathbf{2}}}{\mathbf{\text{hr}}}\mathbf{\times}\frac{\mathbf{61.08308\ g\ MEA}}{\mathbf{\text{mol MEA}}}\mathbf{\times}\frac{\mathbf{\text{hr}}}{\mathbf{3\ g\ MEA}}\mathbf{\approx 0.0102\ mol\ }\mathbf{\text{CO}}_{\mathbf{2}}\mathbf{/mol\ MEA}
 
-Following this procedure and evaluating the sensitivity block for temperatures of 80 and 120°C, by changing the temperature of the stream “IN” and re-running the simulation, a plot similar to Figure 2 may be generated.
+Following this procedure and evaluating the sensitivity block for temperatures of 80 and 120°C, by changing the temperature of the stream :guilabel:`IN` and re-running the simulation, a plot similar to Figure 2 may be generated.
 
 .. image:: media/CO2_partial_pressure.png
 **Figure 1: CO2 partial pressure as a function of loading and temperature (30 wt% MEA)**
@@ -105,7 +111,7 @@ Following this procedure and evaluating the sensitivity block for temperatures o
 |co2| Capture Process Simulation
 -------------------------------------------
 
-The base case model that is set up in the file “CCSI_MEAModel.bkp” has
+The base case model that is set up in the file :file:`CCSI_MEAModel.bkp` has
 operating variables and equipment configurations as specified in Table
 2.
 
@@ -152,42 +158,41 @@ Packing Height (ft)                         39.6837
 The variables described in Table 3 may be varied within reason, although
 abrupt changes in certain variables may results in failure of the
 simulation to converge. In the simulation provided in the example file,
-the variables for the “ABSLEAN” and “GASIN” streams can be located by
+the variables for the :guilabel:`ABSLEAN` and :guilabel:`GASIN` streams can be located by
 double-clicking the respective streams. The variables for the absorber
 intercoolers can be located from the navigation pane by selecting
-“Blocks” → “ABSORBER” → “Configuration” → “Pumparounds,” and the first
-and second intercoolers are referred to as “P-1” and “P-2,”
+:menuselection:`Blocks --> ABSORBER --> Configuration --> Pumparounds`, and the first
+and second intercoolers are referred to as :guilabel:`P-1` and :guilabel:`P-2`,
 respectively. The top pressure of the absorber and regenerator can be
-located by double-clicking the “ABSORBER” and “REGEN” blocks and
-selecting the “Pressure” tab. Moreover, the reboiler duty for “REGEN” is
-located under the “Configuration” tab. The column packing diameters and
-height can be located by selecting “Blocks” → “ABOSRBER” or “REGEN” →
-“Sizing and Rating” → “Packing Rating” → “1” → “Setup.” The values of
+located by double-clicking the :guilabel:`ABSORBER` and :guilabel:`REGEN` blocks and
+selecting the :guilabel:`Pressure` tab. Moreover, the reboiler duty for :guilabel:`REGEN` is
+located under the :guilabel:`Configuration` tab. The column packing diameters and
+height can be located by selecting :menuselection:`Blocks --> ABSORBER` or :menuselection:`REGEN --> Sizing and Rating --> Packing Rating --> 1 --> Setup`. The values of
 the regenerator inlet pressure and temperature are specified in the
-“PUMP” and “EXCHANGE” blocks, respectively. 
+:guilabel:`PUMP` and :guilabel:`EXCHANGE` blocks, respectively. 
 
 .. note:: 
-   A sensitivity block, referred to as “FLOW” in the simulation, is used to set the
+
+   A sensitivity block, referred to as :guilabel:`FLOW` in the simulation, is used to set the
    flowrate of the inlet solvent stream, as the simulation will not
    automatically converge for such a low flow rate.
-
 
 Next, the CO\ :sub:`2` capture process, which includes the
 absorber and regenerator columns, is evaluated for two sets of operating
 conditions.
 
-1. Open the “CCSI_MEAModel.bkp” file. In the navigation pane,
-   right-click “Blocks,” select “Activate,” right-click “Streams,” and
-   then select “Activate.” Run the simulation. **Note:** All streams and
-   blocks have been deactivated to reduce the time required to obtain
-   the results for the test in Section 2.2 Predicting System VLE. If
-   block “B1” and streams “IN” and “OUT” have already been created in
-   the same file, they need to be deactivated by right-clicking them and
-   selecting “Deactivate” before activating all streams with the
-   aforementioned procedure.
+1. Open the :file:`CCSI_MEAModel.bkp` file. In the navigation pane,
+   right-click :guilabel:`Blocks`, select :guilabel:`Activate`, right-click :guilabel:`Streams`, and
+   then select :guilabel:`Activate`. Run the simulation.
+   
+   .. note::
 
-5. In the flowsheet, right-click stream “ABSRICH,” select “Results,” and
-   then select “STRIPOUT” from the drop-down arrow at the top of the
+      All streams and blocks have been deactivated to reduce the time required to obtain the results for the test in Section 2.2 Predicting System VLE.
+      If block :guilabel:`B1` and streams :guilabel:`IN` and :guilabel:`OUT` have already been created in the same file,
+      they need to be deactivated by right-clicking them and selecting :guilabel:`Deactivate` before activating all streams with the aforementioned procedure.
+
+5. In the flowsheet, right-click stream :guilabel:`ABSRICH`, select :guilabel:`Results`, and
+   then select :guilabel:`STRIPOUT` from the drop-down arrow at the top of the
    right column. Ensure that the results obtained match those given in
    Table 3, noting that only selected rows are included in the table.
    The results shown in Table 3 were obtained from Aspen V10, and may
@@ -211,13 +216,13 @@ Pressure kPa     108.82     183.7
 Enthalpy J/kmol  -301829043 -281379385
 ================ ========== ==========
 
-6. Reinitialize the simulation by clicking “Reset” or pressing
-   “Shift+F5,” and then selecting “OK.” In the navigation pane, navigate
-   to “Blocks” → “Absorber” → “Configuration” → “Pumparounds” → “P-1,”
-   and then change the “flow rate” to “3000 kg/hr.” Navigate to “P-2”
-   and then change the “flow rate” to the same value.
+6. Reinitialize the simulation by clicking :guilabel:`Reset` or pressing
+   :kbd:`Shift+F5`, and then selecting :guilabel:`OK`. In the navigation pane, navigate
+   to :menuselection:`Blocks --> Absorber --> Configuration --> Pumparounds --> P-1`,
+   and then change the :guilabel:`flow rate` to :guilabel:`3000 kg/hr`. Navigate to :guilabel:`P-2`
+   and then change the :guilabel:`flow rate` to the same value.
 
-7. Navigate to “Model Analysis Tools” and activate the “FLOW”
+7. Navigate to :guilabel:`Model Analysis Tools` and activate the :guilabel:`FLOW`
    sensitivity block, which is used to determine the CO\ :sub:`2`
    capture percentage in the absorber and the required reboiler duty for
    the stripper as a function of the lean solvent flowrate. Execute the
@@ -227,19 +232,22 @@ Enthalpy J/kmol  -301829043 -281379385
    different when running the model with Aspen V11.
 
 .. image:: media/flow_results.png
-**Figure 2: Results of the “FLOW” sensitivity block for the case study.**
+**Figure 2: Results of the :guilabel:`FLOW` sensitivity block for the case study.**
 
-8. Navigate to “Blocks” → “Absorber” → “Profiles” and then highlight the
-   columns labeled “Vapor Temperature” and “Liquid Temperature.” Under
-   “Plot” on the “Home” tab, select “Custom,” and then verify that the
-   resulting plot resembles Figure 4. **Note:** These temperature
-   profiles correspond to the last simulation executed (Case 8).
+8. Navigate to :menuselection:`Blocks --> Absorber --> Profiles` and then highlight the
+   columns labeled :guilabel:`Vapor Temperature` and :guilabel:`Liquid Temperature`. Under
+   :guilabel:`Plot` on the :guilabel:`Home` tab, select :guilabel:`Custom`, and then verify that the
+   resulting plot resembles Figure 4.
+   
+   .. note::
+   
+      These temperature profiles correspond to the last simulation executed (Case 8).
 
 .. image:: media/absorber_temp.png
 **Figure 3: Absorber temperature profile for the case study.**
 
 
-9. Navigate to “Blocks” → “Regen” → “Profiles” and then repeat the
+9. Navigate to :menuselection:`Blocks --> Regen --> Profiles` and then repeat the
    procedure described in Step 5. Verify that the temperature profile
    resembles what is shown in Figure 4.
 
