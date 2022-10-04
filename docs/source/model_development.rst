@@ -56,7 +56,7 @@ of this model [10]_ [11]_. No parameters have been tuned to improve the fit of t
 absorber inlet is not modeled. The columns are modeled as rate-based columns using RateSep\ :sup:`TM`\.
 
 The various submodels are implemented in Aspen Plus either as built-in models (e.g., ELECNRTL thermodynamic framework) or FORTRAN user models, in cases where built-in models with the appropriate model form are not available. The user models are combined 
-into a dynamic library (:file:`ccsi10.dll`` or :file:`ccsi11.dll`` for this model) and a dynamic linking options (DLOPT) file (:file:`ccsi.opt``) is also provided, which has already been specified in the Aspen Plus file for this model. The various user models contained in the linked library include
+into a dynamic library (:file:`ccsi10.dll` or :file:`ccsi11.dll` for this model) and a dynamic linking options (DLOPT) file (:file:`ccsi.opt`) is also provided, which has already been specified in the Aspen Plus file for this model. The various user models contained in the linked library include
 physical property models for viscosity, density, surface tension, and diffusivity, the hydraulics model, the interfacial area model, and the reaction kinetics model. Further information on the user subroutines may be found :doc:`here <fortran_subroutines>`.
 
 Model Features
