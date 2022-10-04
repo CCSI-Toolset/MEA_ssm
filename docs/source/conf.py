@@ -68,6 +68,8 @@ html_static_path = ['_static']
 rst_epilog = r"""
 .. |co2| replace:: CO\ :sub:`2` \
 .. |h2o| replace:: H\ :sub:`2`\ O
+.. |no2| replace:: NO\ :sub:`2` \
+.. |o2| replace:: O\ :sub:`2` \
 .. |mea| replace:: :abbr:`MEA (monoethanolamine)`\
 """
 

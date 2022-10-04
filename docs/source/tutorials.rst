@@ -93,10 +93,10 @@ Predicting System VLE
 +------+--------+--------------+---------+
 
 4. From this example, the vapor-liquid equilibrium (VLE) of the ternary
-   MEA-H\ :sub:`2`\ O-CO\ :sub:`2` system as a function of temperature
-   and CO\ :sub:`2` loading may be determined for 30 wt% MEA. The
-   CO\ :sub:`2` loading (mol CO\ :sub:`2`/mol MEA) may be calculated by
-   multiplying the CO\ :sub:`2` molar flow by the molecular weight of
+   MEA-|h2o|-|co2| system as a function of temperature
+   and |co2| loading may be determined for 30 wt% MEA. The
+   |co2| loading (mol |co2|/mol MEA) may be calculated by
+   multiplying the |co2| molar flow by the molecular weight of
    MEA and dividing by the mass flow of MEA. For example:
 
 .. math::
@@ -125,18 +125,18 @@ Temperature (°C)                            40.97
 Pressure (kPa)                              245.94
 Mass Flow (kg/hr)                           6803.7
 **Component Mole Fractions**                
-H\ :sub:`2`\ O                              0.87457
-CO\ :sub:`2`                                0.01585
+|h2o|                                       0.87457
+|co2|                                       0.01585
 MEA                                         0.10958
 **GASIN Stream (Absorber Gas Inlet)**       
 Temperature (°C)                            42.48
 Pressure (kPa)                              108.82
 Mass Flow (kg/hr)                           2266.1
 **Component Mass Fractions**                
-H\ :sub:`2`\ O                              0.04623
-CO\ :sub:`2`                                0.17314
-N\ :sub:`2`                                 0.71165
-O\ :sub:`2`                                 0.06898
+|h2o|                                       0.04623
+|co2|                                       0.17314
+|no2|                                       0.71165
+|o2|                                        0.06898
 **Absorber**                                
 Intercooler #1 Flowrate (kg/hr)             7364.83
 Intercooler #1 Return Temperature (°C)      40.13
@@ -177,7 +177,7 @@ the regenerator inlet pressure and temperature are specified in the
    flowrate of the inlet solvent stream, as the simulation will not
    automatically converge for such a low flow rate.
 
-Next, the CO\ :sub:`2` capture process, which includes the
+Next, the |co2| capture process, which includes the
 absorber and regenerator columns, is evaluated for two sets of operating
 conditions.
 
@@ -223,7 +223,7 @@ Enthalpy J/kmol  -301829043 -281379385
    and then change the :guilabel:`flow rate` to the same value.
 
 7. Navigate to :guilabel:`Model Analysis Tools` and activate the :guilabel:`FLOW`
-   sensitivity block, which is used to determine the CO\ :sub:`2`
+   sensitivity block, which is used to determine the |co2|
    capture percentage in the absorber and the required reboiler duty for
    the stripper as a function of the lean solvent flowrate. Execute the
    model, navigate to the results of the sensitivity block, and verify

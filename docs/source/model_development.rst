@@ -17,7 +17,7 @@ file is used to specify the :file:`dll` file within the :file:`bkp` file.
 It has been confirmed that the model is also functional in Aspen V12 if the :file:`ccsi11.dll` is used, and it is expected to also be compatible with later
 versions (e.g., V12.1, V12.2) that have not yet been evaluated by the model developers.
 
-This model represents the first version of the "gold standard" model for the MEA capture system. It is composed of individually developed sub-models for physical properties of CO\ :sub:`2`\-loaded
+This model represents the first version of the "gold standard" model for the MEA capture system. It is composed of individually developed sub-models for physical properties of |co2|\-loaded
 aqueous MEA solutions and hydraulic and mass transfer models for the system of interest. Each sub-model is developed and calibrated with relevant data over the full range of process conditions of interest 
 (e.g., temperature, composition). For each sub-model, existing models were considered as candidates and modified to better fit experimental data over the conditions of interest.
 
@@ -72,10 +72,10 @@ considered in testing at NCCC.
 | Variable                                             | Range        |
 +======================================================+==============+
 | Lean Solvent Amine Concentration (g MEA/g            | 0.25 – 0.35  |
-| MEA+H\ :sub:`2`\ O)                                  |              |
+| MEA+|h2o|)                                           |              |
 +------------------------------------------------------+--------------+
-| Lean Solvent CO\ :sub:`2` Loading (mol               | 0.05 – 0.50  |
-| CO\ :sub:`2`/mol MEA)                                |              |
+| Lean Solvent |co2| Loading (mol                      | 0.05 – 0.50  |
+| |co2|/mol MEA)                                       |              |
 +------------------------------------------------------+--------------+
 | Lean Solvent Flowrate (kg/hr)                        | 3000 – 12000 |
 +------------------------------------------------------+--------------+
