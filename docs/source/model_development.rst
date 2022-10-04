@@ -12,7 +12,7 @@ This is due to a change starting with V11 in which Aspen Plus is compiled as a 6
 file is used to specify the :file:`dll` file within the :file:`bkp` file. 
 
 .. note:: 
- When executing the :file:`bkp` file in Aspen Plus V11, the text in the :file:`opt` file must be modified to ``"ccsi11.dll"``.
+ When executing the :file:`bkp` file in Aspen Plus V11, the text in the :file:`opt` file must be modified to :file:`ccsi11.dll`.
 
 It has been confirmed that the model is also functional in Aspen V12 if the :file:`ccsi11.dll` is used, and it is expected to also be compatible with later
 versions (e.g., V12.1, V12.2) that have not yet been evaluated by the model developers.
@@ -25,13 +25,11 @@ aqueous MEA solutions and hydraulic and mass transfer models for the system of i
 Physical Property Models
 ------------------------
 
-Compare :cite:p:`10.1002/aic.14762` and :cite:t:`10.1002/aic.14762`.
-
 Physical property models developed for this system include stand-alone models and an integrated thermodyamic framework. Stand-alone models for viscosity, density, and surface tension of the system have been 
-developed, with uncertainty quantification, as described in Morgan et al., [MBTM15]_ and also :cite:t:`10.1002/aic.14762` and are implemented as FORTRAN user models. The thermodynamic framework of this system is developed using UT Austin's 
-Phoenix model [Plaz12]_ thermodynamic framework as a precursor. The solution thermodynamics are represented by the ELECNRTL method in Aspen Plus, which uses the Redlich-Kwong equation of state to calculate 
+developed, with uncertainty quantification, as described in Morgan et al., [1]_ and are implemented as FORTRAN user models. The thermodynamic framework of this system is developed using UT Austin's 
+Phoenix model [2]_ thermodynamic framework as a precursor. The solution thermodynamics are represented by the ELECNRTL method in Aspen Plus, which uses the Redlich-Kwong equation of state to calculate 
 the vapor phase fugacity coefficients and the electrolyte non-random two liquid (e-NRTL) model to calculate the activity coefficients in the liquid phase. Model parameters are calibrated by fitting data for VLE,
-heat capacity, and heat of absorption for the ternary |mea|-|h2o|-|co2| system and VLE data for the binary |mea|-|h2o| system [MCOB17]_. The kinetic model used in this work is taken from the Phoenix model,
+heat capacity, and heat of absorption for the ternary |mea|-|h2o|-|co2| system and VLE data for the binary |mea|-|h2o| system [3]_. The kinetic model used in this work is taken from the Phoenix model,
 in which the ionic speciation of the system is simplified into two equilibrium reactions:
 
 .. math:: 2MEA + \text{CO}_{2} \leftrightarrow \text{MEA}^{+} + \text{MEACOO}^{-}
@@ -39,22 +37,22 @@ in which the ionic speciation of the system is simplified into two equilibrium r
 .. math:: MEA + \text{CO}_{2} + H_{2}O \leftrightarrow \text{MEA}^{+} + \text{HCO}_{3}^{-}
 
 The forward reaction rate constants are taken from the Phoenix model, and the overall reaction rate is written in terms of the equilibrium constants which are also calculated as part of the thermodynamic framework of the system. This follows
-the methodology presented in Mathias and Gilmartin [MaGi14]_, and is implemented to ensure that the reaction kinetics are consistent with the thermodynamic framework.
+the methodology presented in Mathias and Gilmartin [4]_, and is implemented to ensure that the reaction kinetics are consistent with the thermodynamic framework.
 
 Mass Transfer and Hydraulic Models
 ----------------------------------
 
-The development of mass transfer and hydraulic models for this MEA steady-state model is presented in the work of Chinen et al. [CMOB18]_. Hydrodynamic models developed in this work include models for pressure drop and hold-up.
-The Billet and Schultes correlation [BiSc93]_ is regressed with data from Tsai [Tsai10]_ for MellapakPlus\ :sup:`TM`\ 250Y packing, which is similar to the MellapakPlus 252Y packing that is used in this work. In this work, a novel and integrated 
+The development of mass transfer and hydraulic models for this MEA steady-state model is presented in the work of Chinen et al. [5]_. Hydrodynamic models developed in this work include models for pressure drop and hold-up.
+The Billet and Schultes correlation [6]_ is regressed with data from Tsai [7]_ for MellapakPlus\ :sup:`TM`\ 250Y packing, which is similar to the MellapakPlus 252Y packing that is used in this work. In this work, a novel and integrated 
 methodology to obtain the mass transfer model is proposed. In this integrated mass transfer model, parameters of the interfacial area, mass transfer coefficient, and diffusivity models are regressed using wetted wall column data from
-Dugas [Duga09]_ and pilot plant data from Tobiesen et al. [ToSJ07]_. This required simultaneous regression of process model and property parameters, which was accomplished using the CCSI software Framework for Optimization, Quantification of Uncertainty, 
+Dugas [8]_ and pilot plant data from Tobiesen et al. [9]_. This required simultaneous regression of process model and property parameters, which was accomplished using the CCSI software Framework for Optimization, Quantification of Uncertainty, 
 and Surrogates [FOQUS]_.
 
 Development of Process Model
 ----------------------------
 
 The aforementioned submodels are integrated into this steady-state process model, which is representative of the configuration of the National Carbon Capture Center (NCCC) in Wilsonville, Alabama, for which data have been obtained for the validation 
-of this model [MCOB18]_ [MCAT20]_. No parameters have been tuned to improve the fit of the model to the pilot plant data. The model includes both the absorber and stripper columns, although the recylce of the lean solvent from the regenerator outlet to the 
+of this model [10]_ [11]_. No parameters have been tuned to improve the fit of the model to the pilot plant data. The model includes both the absorber and stripper columns, although the recylce of the lean solvent from the regenerator outlet to the 
 absorber inlet is not modeled. The columns are modeled as rate-based columns using RateSep\ :sup:`TM`\.
 
 The various submodels are implemented in Aspen Plus either as built-in models (e.g., ELECNRTL thermodynamic framework) or FORTRAN user models, in cases where built-in models with the appropriate model form are not available. The user models are combined 
@@ -111,15 +109,16 @@ using the equations:
 
 .. rubric:: References
 
-.. [MBTM15] [1] Morgan, J.C.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Uncertainty Quantification of Property Models: Methodology and its Application to |co2|-Loaded Aqueous MEA Solutions. AIChE Journal 2015, 61, (6), 1822-1839.
-.. [Plaz12] [2] Plaza, J.M. Modeling of Carbon Dioxide Absorption Using Aqueous Monoethanolamine, Piperazine, and Promoted Potassium Carbonate. The University of Texas at Austin, 2012.
-.. [MCOB17] [3] Morgan, J.C.; Chinen, A.S.; Omell, B.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Thermodynamic Modeling and Uncertainty Quantification of |co2|-Loaded Aqueous MEA Solutions. Chem Eng. Sci. 2017, 168, 309-324.
-.. [MaGi14] [4] Mathias, P.M.; Gilmartin, J.P., Quantitative Evaluation of the Effect of Uncertainty in Property Models on the Simulated Performance of Solvent-Based |co2| Capture. Energy Procedia. 2014, 63, 1171-1185.
-.. [CMOB18] [5] Chinen, A.S.; Morgan, J.C.; Omell, B.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Development of a Rigorous Modeling Framework for Solvent-Based |co2| Capture. Part 1: Hydraulic and Mass Transfer Models and their Uncertainty Quantification. Ind. Eng. Chem. Res. 2018, 57, 10448-10463.
-.. [BiSc93] [6] Billet, R., Schultes, M., Predicting mass transfer in packed columns. Chem Eng Technol 1993, 16, 1-9.
-.. [Tsai10] [7] Tsai, R.E. Mass Transfer Area of Structured Packing. The University of Texas at Austin, 2010.
-.. [Duga09] [8] Dugas, R.E. Carbon Dioxide Absorption, Desorption, and Diffusion in Aqueous Piperazine and Monoethanolamine. The University of Texas at Austin, 2009.
-.. [ToSJ07] [9] Tobiesen, F.A.; Svendsen, H.F.; Juliussen, O., Experimental Validation of a Rigorous Absorber Model for |co2| Postcombustion Capture. AIChE Journal. 2007, 53, 846-865. 
-.. [MCOB18] [10] Morgan, J.C.; Chinen, A.S.; Omell, B.; Bhattacharyya, D.; Tong, C.; Miller, D.C.; Buschle, B.; Lucquiaud, M., Development of a Rigorous Modeling Framework for Solvent-Based |co2| Capture. Part 2: Steady-State Validation and Uncertainty Quantification with Pilot Data. Ind. Eng. Chem. Res. 2018, 57, 10464-10481.
-.. [MCAT20] [11] Morgan, J.C.; Chinen, A.S.; Anderson-Cook, C.; Tong, C.; Carroll, J.; Saha, C.; Omell, B.; Bhattacharyya, D.; Matuszewski, M.; Bhat, K.S.; Miller, D.C., Development of a Framework for Sequential Bayesian Design of Experiments: Application to a Pilot-Scale Solvent-Based |co2| Capture Process. App. Energy. 2020, 262, 114533. 
+.. [1] Morgan, J.C.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Uncertainty Quantification of Property Models: Methodology and its Application to |co2|-Loaded Aqueous MEA Solutions. AIChE Journal 2015, 61, (6), 1822-1839.
+.. [1] Morgan, J.C.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Uncertainty Quantification of Property Models: Methodology and its Application to |co2|-Loaded Aqueous MEA Solutions. AIChE Journal 2015, 61, (6), 1822-1839.
+.. [2] Plaza, J.M. Modeling of Carbon Dioxide Absorption Using Aqueous Monoethanolamine, Piperazine, and Promoted Potassium Carbonate. The University of Texas at Austin, 2012.
+.. [3] Morgan, J.C.; Chinen, A.S.; Omell, B.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Thermodynamic Modeling and Uncertainty Quantification of |co2|-Loaded Aqueous MEA Solutions. Chem Eng. Sci. 2017, 168, 309-324.
+.. [4] Mathias, P.M.; Gilmartin, J.P., Quantitative Evaluation of the Effect of Uncertainty in Property Models on the Simulated Performance of Solvent-Based |co2| Capture. Energy Procedia. 2014, 63, 1171-1185.
+.. [5] Chinen, A.S.; Morgan, J.C.; Omell, B.; Bhattacharyya, D.; Tong, C.; Miller, D.C., Development of a Rigorous Modeling Framework for Solvent-Based |co2| Capture. Part 1: Hydraulic and Mass Transfer Models and their Uncertainty Quantification. Ind. Eng. Chem. Res. 2018, 57, 10448-10463.
+.. [6] Billet, R., Schultes, M., Predicting mass transfer in packed columns. Chem Eng Technol 1993, 16, 1-9.
+.. [7] Tsai, R.E. Mass Transfer Area of Structured Packing. The University of Texas at Austin, 2010.
+.. [8] Dugas, R.E. Carbon Dioxide Absorption, Desorption, and Diffusion in Aqueous Piperazine and Monoethanolamine. The University of Texas at Austin, 2009.
+.. [9] Tobiesen, F.A.; Svendsen, H.F.; Juliussen, O., Experimental Validation of a Rigorous Absorber Model for |co2| Postcombustion Capture. AIChE Journal. 2007, 53, 846-865. 
+.. [10] Morgan, J.C.; Chinen, A.S.; Omell, B.; Bhattacharyya, D.; Tong, C.; Miller, D.C.; Buschle, B.; Lucquiaud, M., Development of a Rigorous Modeling Framework for Solvent-Based |co2| Capture. Part 2: Steady-State Validation and Uncertainty Quantification with Pilot Data. Ind. Eng. Chem. Res. 2018, 57, 10464-10481.
+.. [11] Morgan, J.C.; Chinen, A.S.; Anderson-Cook, C.; Tong, C.; Carroll, J.; Saha, C.; Omell, B.; Bhattacharyya, D.; Matuszewski, M.; Bhat, K.S.; Miller, D.C., Development of a Framework for Sequential Bayesian Design of Experiments: Application to a Pilot-Scale Solvent-Based |co2| Capture Process. App. Energy. 2020, 262, 114533. 
 .. [FOQUS] Framework for Optimization, Quantification of Uncertainty, and Surrogates (FOQUS). https://github.com/CCSI-Toolset/FOQUS
