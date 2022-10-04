@@ -3,14 +3,14 @@ Development of FORTRAN Subroutines
 
 This section is optional and intended primarily for those users who wish to directly develop the FORTRAN subroutines used in this model and compile them as a dll file. Otherwise, 
 the user may used the provided :file:`ccsi.opt` and either the :file:`ccsi10.dll` or :file:`ccsi11.dll` file. In order to create the dll file, ensure that an Intel Fortran compiler
-and Microsoft Visual Studio are installed in the machine. Open the Aspen application "Set Compiler for V10" (or the application corresponding to the version of 
+and Microsoft Visual Studio are installed in the machine. Open the Aspen application :guilabel:`Set Compiler for V10` (or the application corresponding to the version of 
 Aspen Plus in use) to see the list of combinations compatible with V10 and V11, respectively; this is shown for both versions in Figure 1.
 
 **Figure 1. 'Set Compiler' applications for (A) Aspen Plus V10 and (B) Aspen Plus V11**
 
-As directed in the set compiler application, select an option for which the 'State' is 'OK'. the provided dll files :file:`ccsi10.dll` and :file:`ccsi11.dll` were compiled with the respective 
-FORTRAN compilers shown with the 'OK' status in Figure 1. If all options are shown with the 'ERROR' status, then one cannot proceed with the following steps until the appropriate software
-is installed.
+As directed in the set compiler application, select an option for which the :guilabel:`State` is :guilabel:`OK`.
+The provided dll files :file:`ccsi10.dll` and :file:`ccsi11.dll` were compiled with the respective FORTRAN compilers shown with the 'OK' status in Figure 1.
+If all options are shown with the :guilabel:`ERROR` status, then one cannot proceed with the following steps until the appropriate software is installed.
 
 To obtain the FORTRAN template ``.f`` files distributed with Aspen Tech software, navigate to one of the following folders depending on the Aspen verson of interest:
 
@@ -20,7 +20,7 @@ To obtain the FORTRAN template ``.f`` files distributed with Aspen Tech software
    C:\Program Files\AspenTech\Aspen Plus V11.0\Engine\User
 
 .. note::
-     Templates for V10 (32-bit program) may be found in the "Program Files (x86)" directory, while those for later versions (64-bit program) are found in the "Program Files" directory.
+     Templates for V10 (32-bit program) may be found in the :file:`Program Files (x86)` directory, while those for later versions (64-bit program) are found in the :file:`Program Files` directory.
 
 The following subsections provide the details of the required updates to the template files.
 
@@ -181,7 +181,7 @@ and replacing this code with:
    as the chosen mass transfer correlation. For this example, the interfacial area correlation associated with the selection "Billet and Schultes (1993)" was used in calculating interfacial area passed
    on to the mass transfer correlation despite the selection of "User" as the choice for interfacial area method. To fix this problem, the "User" method is used for both mass transfer coefficient and 
    interfacial area methods in the new version of the CCSI Steady State MEA Model. The code for liquid and gas-phase mass transfer coefficients in the user subroutine is based on the equations given in 
-   Billet and Schultes, [Billet1993]_ in order to ensure consistency with the original model.
+   Billet and Schultes, [1]_ in order to ensure consistency with the original model.
 
 Interfacial Area Model
 ----------------------
@@ -251,4 +251,4 @@ For users who choose not to create the :file:`dll` file, a version is provided w
 References
 ----------
 
-.. [Billet1993] Billet, R., Schultes, M., Predicting mass transfer in packed columns. Chem Eng Technol 1993, 16, 1-9.
+.. [1] Billet, R., Schultes, M., Predicting mass transfer in packed columns. Chem Eng Technol 1993, 16, 1-9.
