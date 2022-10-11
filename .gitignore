@@ -1,3 +1,6 @@
 *.tgz
 *.zip
 ~$*.docx*
+
+docs/build/**
+.vscode/

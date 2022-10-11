@@ -1,0 +1,26 @@
+.rst-content .menuselection,
+.rst-content .kbd {
+    border: 1px solid #7fbbe3;
+    background: #e7f2fa;
+    font-size: 80%;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2.4px 6px;
+    margin: auto 2px;
+}
+
+
+/* Use the full width of the browser window */
+
+.wy-nav-content {
+    max-width: none;
+    /* max-width: 95% !important; */
+}
+
+
+/* override table no-wrap */
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal;
+}
