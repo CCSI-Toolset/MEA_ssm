@@ -4,7 +4,7 @@ The MEA Steady State Model is a model of an aqueous monoethanolamine solvent-bas
 Note: This product is also part of the [Process Models Bundle](../../../ProcessModels_bundle)
 
 ## Getting Started
-See installation and user guide documents in the [documentation](./docs) subdirectory.
+See installation and user guide documents in the [online documentation](https://mea-ssm.readthedocs.io/).
 
 ## Authors
 * [Josh Morgan](https://github.com/jmorgan29)
